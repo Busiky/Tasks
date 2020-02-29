@@ -1,5 +1,4 @@
-def solve():
-    line = input()
+def solve(line):
     result = []
     count = 0
     for i in range(1, len(line) - 1):
