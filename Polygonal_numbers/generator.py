@@ -5,9 +5,10 @@ from os.path import isdir
 from shutil import rmtree
 import random as rd
 from solution import *
+from all_solutions import solve
 
-TEST_COUNT = 20
-TEST_COUNT_2 = 30
+TEST_COUNT = 30
+TEST_COUNT_2 = 20
 TEST_PATH = 'tests'
 ANSWER_PATH = 'tests'
 SAMPLES_PATH = 'tests'
@@ -621,14 +622,14 @@ def make_test(test_number):
     answer_file_name = f'./{ANSWER_PATH}/{test_number + 1:02}.a'
 
     input_data = make_input_data()
-    output_data = make_output_data(input_data)
+    output_data = solve(input_data)
 
     with open(test_file_name, 'w', encoding='utf8', newline="\n") as test_stream:
         line = f"print(check_polygon_number({input_data}))"
         print(line, file=test_stream)
 
     with open(answer_file_name, 'w', encoding='utf8', newline="\n") as answer_stream:
-        print(output_data, sep='\n', file=answer_stream)
+        print(*output_data, sep='\n', file=answer_stream)
 
     print(f'Test {test_number + 1} [OK]')
 
